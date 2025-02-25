@@ -1,4 +1,4 @@
-# A Python flask form for users to fill in.
+# A Python flask form for users to fill in their contact details.
 - The root URL (/) displays an HTML form for the user to fill out.
 - When the form is submitted, the data is sent to the /submit URL using a POST request.
 - The /submit URL processes the form data and returns a thank you message with the submitted information.
