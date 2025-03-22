@@ -26,3 +26,36 @@ If you encounter any issues, check the output of the following commands for furt
 kubectl get pods
 kubectl describe pod <pod-name>
 kubectl logs <pod-name>
+
+# Database configuration
+To run the application with the database execute the apply command below:
+
+kubectl apply -f db-deployment.yaml 
+
+Verify that the database configuration is running   successfully in Kubernetes with:
+
+    kubectl get pods --The mysql pod should be running
+
+Look inside the deployment directory:
+    kubectl get deployments/mysql     
+
+And also the service directory:
+       kubectl get services/mysql
+
+Access the pod configuration for mysql:
+    kubectl exec -it <MYSQL_POD_NAME> -- /bin/sh
+
+Create the table with data:
+    CREATE DATABASE pyapplicationdb;
+    USE pyapplicationdb;
+    CREATE TABLE random_words (
+    word_id INT AUTO_INCREMENT,
+    word VARCHAR(255) NOT NULL,
+    PRIMARY KEY (word_id)
+);
+    INSERT INTO random_words (word) VALUES ('randword1'), ('randword2'), ('randword3');
+    SELECT * FROM random_words;
+
+And finally, acces the flask application via the url:
+
+    minikube service pythonservices --url
