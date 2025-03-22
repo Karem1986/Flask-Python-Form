@@ -42,7 +42,7 @@ Look inside the deployment directory:
 And also the service directory:
        kubectl get services/mysql
 
-Access the pod configuration for mysql:
+Access the pod configuration for mysql, use the Password specified in the db deployment configuration.
     kubectl exec -it <MYSQL_POD_NAME> -- /bin/sh
 
 Create the table with data:
