@@ -1,6 +1,12 @@
 from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+
+# Configuration to connect to MYSQL database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Passw0rd@mysql/pyapplicationdb'
+db = SQLAlchemy(app)
+
 
 @app.route('/')
 def form():
@@ -25,6 +31,6 @@ def submit():
 # This code checks if the script is being run directly (as opposed to being imported as a module). 
 # If it is, the Flask application is started with debugging enabled.
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
     
 # http://localhost:5000 --> to access this application
